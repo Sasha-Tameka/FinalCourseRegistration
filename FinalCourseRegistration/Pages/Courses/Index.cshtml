@@ -1,0 +1,23 @@
+﻿@page
+@model FinalCourseRegistration.Pages.Courses.IndexModel
+@{
+	ViewData["Title"] = "Courses";
+}
+<h2>Courses</h2>
+<table border="1">
+    <tr>
+        <th>Course ID</th>
+        <th>Course Number</th>
+        <th>Course Name</th>
+        <th>Description</th>
+    </tr>
+    @foreach (var course in Model.Courses)
+    {
+        <tr>
+            <td>@course.CourseId</td>
+            <td>@course.CourseNumber</td>
+            <td>@course.CourseName</td>
+            <td>@course.Description</td>
+        </tr>
+    }
+</table>
