@@ -1,15 +1,19 @@
 ﻿@page
 @model FinalCourseRegistration.Pages.Courses.IndexModel
 @{
-	ViewData["Title"] = "Courses";
+    ViewData["Title"] = "Courses";
 }
 <h2>Courses</h2>
+
+<p><a asp-page="Create" class="btn btn-primary">Add New Course</a></p>
+
 <table border="1">
     <tr>
         <th>Course ID</th>
         <th>Course Number</th>
         <th>Course Name</th>
         <th>Description</th>
+        <th></th>
     </tr>
     @foreach (var course in Model.Courses)
     {
@@ -18,6 +22,10 @@
             <td>@course.CourseNumber</td>
             <td>@course.CourseName</td>
             <td>@course.Description</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@course.CourseId">Edit</a> |
+                <a asp-page="Delete" asp-route-id="@course.CourseId">Delete</a>
+            </td>
         </tr>
     }
 </table>

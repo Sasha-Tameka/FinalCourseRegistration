@@ -1,10 +1,12 @@
 ﻿@page
 @model FinalCourseRegistration.Pages.Students.IndexModel
 @{
-
-	ViewData["Title"] = "Students";
+    ViewData["Title"] = "Students";
 }
 <h2>Students</h2>
+
+<p><a asp-page="Create" class="btn btn-primary">Add New Student</a></p>
+
 <table border="1">
     <tr>
         <th>Student ID</th>
@@ -12,6 +14,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th></th>
     </tr>
     @foreach (var student in Model.Students)
     {
@@ -21,6 +24,10 @@
             <td>@student.LastName</td>
             <td>@student.Email</td>
             <td>@student.PhoneNumber</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@student.StudentId">Edit</a> |
+                <a asp-page="Delete" asp-route-id="@student.StudentId">Delete</a>
+            </td>
         </tr>
     }
 </table>

@@ -1,19 +1,20 @@
+using FinalCourseRegistration.Data;
 using FinalCourseRegistration.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalCourseRegistration.Pages.Courses
 {
     public class IndexModel : PageModel
     {
-        public List<Course> Courses { get; set; }
-        public void OnGet()
+        private readonly AppDbContext _context;
+        public IndexModel(AppDbContext context) => _context = context;
+
+        public List<Course> Courses { get; set; } = new();
+
+        public async Task OnGetAsync()
         {
-            Courses = new List<Course>
-            {
-                new Course { CourseId = 1, CourseNumber = "CS101", CourseName = "Introduction to Computer Science", Description = "Basic programming concepts" },
-                new Course { CourseId = 2, CourseNumber = "MTH102", CourseName = "Calculus I", Description = "Limits, derivatives, and integrals" }
-            };
+            Courses = await _context.Courses.ToListAsync();
         }
     }
 }

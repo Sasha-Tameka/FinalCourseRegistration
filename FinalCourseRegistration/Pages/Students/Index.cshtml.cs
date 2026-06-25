@@ -1,19 +1,20 @@
+using FinalCourseRegistration.Data;
 using FinalCourseRegistration.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalCourseRegistration.Pages.Students
 {
     public class IndexModel : PageModel
     {
-        public List<Student> Students { get; set; }
-        public void OnGet()
+        private readonly AppDbContext _context;
+        public IndexModel(AppDbContext context) => _context = context;
+
+        public List<Student> Students { get; set; } = new();
+
+        public async Task OnGetAsync()
         {
-            Students = new List<Student>
-            {
-                new Student { StudentId = 1, FirstName = "Alice", LastName = "Brown", Email = "alice.brown@example.com", PhoneNumber = "123-456-7890" },
-                new Student { StudentId = 2, FirstName = "Bob", LastName = "Johnson", Email = "bob.johnson@example.com", PhoneNumber = "987-654-3210" }
-            };
+            Students = await _context.Students.ToListAsync();
         }
     }
 }

@@ -1,31 +1,190 @@
-html {
-  font-size: 14px;
+/* ===== Academic Catalog Theme ===== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap");
+
+:root {
+  --parchment: #f6f0e4;
+  --parchment-deep: #efe6d3;
+  --ink: #2b2420;
+  --maroon: #7a2e2e;
+  --maroon-deep: #5e2222;
+  --forest: #3d5a40;
+  --brass: #b08d57;
+  --hairline: #d9cbb0;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+* {
+  box-sizing: border-box;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+html,
 body {
-  margin-bottom: 60px;
+  background-color: var(--parchment);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* ---------- Letterhead navbar ---------- */
+
+header .navbar {
+  background-color: var(--parchment) !important;
+  border-bottom: 3px double var(--maroon) !important;
+  box-shadow: none !important;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+a.navbar-brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--maroon) !important;
+  letter-spacing: 0.02em;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  color: var(--ink) !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--maroon) !important;
+}
+
+.navbar-nav .nav-item:not(:last-child) .nav-link::after {
+  content: "·";
+  position: absolute;
+  right: -0.15rem;
+  color: var(--brass);
+}
+
+/* ---------- Headings ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--maroon-deep);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.4rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+h2::before {
+  content: "Course Catalog";
+  display: block;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 0.3rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--brass);
+}
+
+/* ---------- Ledger-style tables ---------- */
+
+table {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+  background-color: #fffdf8;
+  border: 1px solid var(--hairline) !important;
+}
+
+table th {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  background-color: var(--parchment-deep);
+  color: var(--maroon-deep);
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid var(--maroon) !important;
+  border: none;
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid var(--hairline) !important;
+  color: var(--ink);
+}
+
+table tbody tr:nth-child(even) td,
+table tr:nth-child(even) td {
+  background-color: var(--parchment);
+}
+
+table tr:hover td {
+  background-color: #f0e5c8;
+  transition: background-color 0.15s ease;
+}
+
+/* ---------- Links & buttons ---------- */
+
+a {
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  border-bottom-color: var(--forest);
+}
+
+.btn-primary {
+  background-color: var(--maroon);
+  border-color: var(--maroon-deep);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary:hover {
+  background-color: var(--maroon-deep);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  background-color: var(--parchment-deep);
+  border-top: 3px double var(--maroon) !important;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  max-width: 960px;
 }

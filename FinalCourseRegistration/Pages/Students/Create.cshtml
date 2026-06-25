@@ -1,0 +1,27 @@
+@page
+@model FinalCourseRegistration.Pages.Students.CreateModel
+@{
+    ViewData["Title"] = "Add Student";
+}
+<h2>Add New Student</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>First Name</label>
+        <input asp-for="Student.FirstName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Last Name</label>
+        <input asp-for="Student.LastName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Student.Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Phone Number</label>
+        <input asp-for="Student.PhoneNumber" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

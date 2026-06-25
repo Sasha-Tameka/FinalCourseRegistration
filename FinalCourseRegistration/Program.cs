@@ -1,5 +1,10 @@
+using FinalCourseRegistration.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=app.db"));
 // Add services to the container.
 builder.Services.AddRazorPages();
 
